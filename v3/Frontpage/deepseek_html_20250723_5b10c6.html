@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Maldives - Paradise on Earth</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f0f8ff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        header p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #006994;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            padding: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #006994;
+        }
+        
+        /* History Section */
+        .history-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .history-text {
+            flex: 1;
+        }
+        
+        .history-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .history-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Culture Section */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .culture-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .culture-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .culture-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .culture-item-content {
+            padding: 20px;
+        }
+        
+        .culture-item h3 {
+            margin-bottom: 10px;
+            color: #006994;
+        }
+        
+        /* Diving Sites Section */
+        .diving-sites {
+            background-color: #e6f2ff;
+        }
+        
+        .diving-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .diving-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .diving-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .diving-card-content {
+            padding: 20px;
+        }
+        
+        .diving-card h3 {
+            color: #006994;
+            margin-bottom: 10px;
+        }
+        
+        .difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .beginner {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .intermediate {
+            background-color: #FFC107;
+            color: black;
+        }
+        
+        .advanced {
+            background-color: #F44336;
+            color: white;
+        }
+        
+        /* Weather Section */
+        .weather-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .weather-info {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .weather-info h3 {
+            color: #006994;
+            margin-bottom: 20px;
+        }
+        
+        .weather-seasons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .season {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .season:last-child {
+            border-bottom: none;
+        }
+        
+        .season h4 {
+            margin-bottom: 5px;
+            color: #006994;
+        }
+        
+        .weather-map {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .weather-map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        /* Video Section */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin: 0 auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #006994;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #006994;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: #00557d;
+        }
+        
+        /* Homepage Button */
+        .homepage-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #ffd700;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        
+        .homepage-btn.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .homepage-btn:hover {
+            background-color: #e6c200;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            header p {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .history-content {
+                flex-direction: column;
+            }
+            
+            .weather-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Hero Image -->
+    <header>
+        <h1>Discover Maldives</h1>
+        <p>A tropical paradise with pristine beaches, crystal clear waters, and vibrant marine life</p>
+    </header>
+    
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#history">History</a></li>
+            <li><a href="#culture">Culture</a></li>
+            <li><a href="#diving">Diving Sites</a></li>
+            <li><a href="#weather">Weather</a></li>
+            <li><a href="#location">Location</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+    </nav>
+    
+    <!-- History Section -->
+    <section id="history" class="container">
+        <h2>History of Maldives</h2>
+        <div class="history-content">
+            <div class="history-text">
+                <p>The Maldives has a rich and diverse history dating back over 2,500 years. The islands were first settled by seafarers from India and Sri Lanka around 500 BCE, bringing with them Buddhism which would remain the dominant religion for over 1,000 years.</p>
+                <p>In 1153 CE, the Maldives converted to Islam under the influence of Arab traders, and the country has remained a Muslim nation ever since. The Portuguese briefly occupied the islands from 1558 to 1573, but were driven out by local hero Muhammad Thakurufaanu Al Auzam.</p>
+                <p>The Maldives became a British protectorate in 1887 but maintained internal self-governance. The islands gained full independence in 1965, and in 1968 the sultanate was replaced by a republic. Today, the Maldives is known worldwide for its stunning natural beauty and thriving tourism industry.</p>
+            </div>
+            <div class="history-image">
+                <img src="https://images.unsplash.com/photo-1589394815804-964ed0be2eb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Historical Maldives">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Culture Section -->
+    <section id="culture" class="container">
+        <h2>Maldivian Culture</h2>
+        <div class="culture-grid">
+            <div class="culture-item">
+                <img src="https://images.unsplash.com/photo-1583423230902-754c2b0c1f8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Maldivian Culture">
+                <div class="culture-item-content">
+                    <h3>Language & People</h3>
+                    <p>The Maldivian people are ethnically diverse, with influences from Arab, African, and South Asian cultures. The official language is Dhivehi, an Indo-Aryan language with its own script called Thaana. English is widely spoken in tourist areas.</p>
+                </div>
+            </div>
+            <div class="culture-item">
+                <img src="https://images.unsplash.com/photo-1583423230902-754c2b0c1f8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Maldivian Cuisine">
+                <div class="culture-item-content">
+                    <h3>Cuisine</h3>
+                    <p>Maldivian cuisine is centered around fish, especially tuna, and coconut. Traditional dishes include mas huni (shredded smoked fish with coconut), garudhiya (fish soup), and roshi (flatbread). Due to Islamic traditions, alcohol is only available in resort islands.</p>
+                </div>
+            </div>
+            <div class="culture-item">
+                <img src="https://images.unsplash.com/photo-1583423230902-754c2b0c1f8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Maldivian Traditions">
+                <div class="culture-item-content">
+                    <h3>Traditions & Arts</h3>
+                    <p>Traditional Maldivian arts include bodu beru (big drum) music and dance, lacquer work, and mat weaving. The culture is deeply influenced by Islam, with religious festivals like Ramadan and Eid being major celebrations. The traditional dress for women is the libaas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Diving Sites Section -->
+    <section id="diving" class="diving-sites">
+        <div class="container">
+            <h2>Top Diving Sites</h2>
+            <div class="diving-grid">
+                <div class="diving-card">
+                    <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Banana Reef">
+                    <div class="diving-card-content">
+                        <h3>Banana Reef</h3>
+                        <span class="difficulty intermediate">Intermediate</span>
+                        <p>One of the first dive sites discovered in the Maldives, famous for its overhangs, caves, and stunning coral formations. Home to groupers, barracudas, and moray eels.</p>
+                    </div>
+                </div>
+                <div class="diving-card">
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Manta Point">
+                    <div class="diving-card-content">
+                        <h3>Manta Point</h3>
+                        <span class="difficulty beginner">Beginner</span>
+                        <p>As the name suggests, this site is famous for its manta ray cleaning stations. Between May and November, you can see dozens of these gentle giants gliding through the water.</p>
+                    </div>
+                </div>
+                <div class="diving-card">
+                    <img src="https://images.unsplash.com/photo-1560272569-c9d1b8a1c931?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Fish Head">
+                    <div class="diving-card-content">
+                        <h3>Fish Head</h3>
+                        <span class="difficulty advanced">Advanced</span>
+                        <p>An exciting dive site with strong currents that attract large pelagics like gray reef sharks, hammerheads, and tuna. The coral formations are spectacular with many overhangs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Weather Section -->
+    <section id="weather" class="container">
+        <h2>Weather & Climate</h2>
+        <div class="weather-container">
+            <div class="weather-info">
+                <h3>Climate Overview</h3>
+                <p>The Maldives enjoys a tropical monsoon climate with warm temperatures year-round (average 28-32°C). There are two distinct seasons:</p>
+                <div class="weather-seasons">
+                    <div class="season">
+                        <h4>Dry Season (November-April)</h4>
+                        <p>Characterized by low rainfall, low humidity, and calm seas. The northeast monsoon (Iruvai) brings sunny days perfect for beach activities and diving.</p>
+                    </div>
+                    <div class="season">
+                        <h4>Wet Season (May-October)</h4>
+                        <p>The southwest monsoon (Hulhangu) brings more rain and higher humidity, but showers are usually brief. This is the best time for surfing with bigger waves.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="weather-map">
+                <h3>Maldives Location</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8166283.997402963!2d70.42192635!3d3.20277825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x24b599bfaafb7bbd%3A0x414509e181956289!2sMaldives!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Location Video Section -->
+    <section id="location" class="container">
+        <h2>Explore Maldives</h2>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/T4qNQ0F9X0Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <!-- Gallery Section -->
+    <section id="gallery" class="container">
+        <h2>Photo Gallery</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Maldives Beach">
+                <div class="gallery-caption">Pristine White Sand Beach</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1581272108027-0a0095c06a94?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Overwater Bungalow">
+                <div class="gallery-caption">Luxury Overwater Bungalows</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Manta Ray">
+                <div class="gallery-caption">Manta Ray in Crystal Waters</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sunset">
+                <div class="gallery-caption">Breathtaking Sunset</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Aerial View">
+                <div class="gallery-caption">Aerial View of Atolls</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coral Reef">
+                <div class="gallery-caption">Vibrant Coral Reef</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#history">History</a>
+            <a href="#culture">Culture</a>
+            <a href="#diving">Diving</a>
+            <a href="#weather">Weather</a>
+            <a href="#location">Location</a>
+            <a href="#gallery">Gallery</a>
+        </div>
+        <p>&copy; 2023 Discover Maldives. All rights reserved.</p>
+    </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+    
+    <!-- Homepage Button -->
+    <a href="index.html" class="homepage-btn" id="homepageBtn">← Homepage</a>
+    
+    <!-- JavaScript -->
+    <script>
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        const homepageButton = document.getElementById('homepageBtn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+                homepageButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+                homepageButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
